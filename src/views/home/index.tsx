@@ -29,7 +29,7 @@ export const HomeView: FC = ({ }) => {
 
   return (
 
-    <div className="md:hero mx-auto p-4">
+    <div className="md:hero mx-auto p-2">
       <div className="md:hero-content flex flex-col">
         <div className='mt-6'>
         <div className='text-sm font-normal align-bottom text-right text-slate-600 mt-4'>v{pkg.version}</div>
