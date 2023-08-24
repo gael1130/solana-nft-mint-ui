@@ -42,11 +42,11 @@ export const HomeView: FC = ({ }) => {
         </div>
         <h4 className="md:w-full text-2x1 md:text-4xl text-center text-slate-300 my-2">
           <p>98 Love Badges on Solana to learn and grow together</p>
-          <p className='text-slate-500 text-2x1 leading-relaxed'>Minting a badge will make you a supporter & grant you access to our learning platform</p>
+          <p className='text-slate-500 text-2x1 leading-relaxed'>Mint and get a badge with access to our learning platform</p>
         </h4>
         <div className="relative group">
 
-          <Image src="/../public/17.png" alt="Solana Love Badges Collction Image" width={300} height={300} />
+          <Image src="/../public/17.png" alt="Solana Love Badges Collction Image" width={300} height={300} className='rounded mx-auto' />
         </div>
         <div className="flex flex-col mt-2">
           {/* <RequestAirdrop /> */}
