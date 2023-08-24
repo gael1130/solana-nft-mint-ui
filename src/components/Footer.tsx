@@ -2,6 +2,7 @@ import { FC } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 export const Footer: FC = () => {
+    const currentYear = new Date().getFullYear();
     return (
         <div className="flex">
             <footer className="border-t-2 border-[#141414] bg-black hover:text-white w-screen" >
@@ -55,7 +56,7 @@ export const Footer: FC = () => {
                                 </a>
                             </div>
                             <div className="mb-2 m-1 sm:text-left place-items-start items-start font-normal tracking-tight text-secondary">
-                                        © 2023 Solana Foundation
+                                        © { currentYear } built by Gael, art by Elsa
                             </div>
                         </div>
 
