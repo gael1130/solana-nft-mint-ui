@@ -10,16 +10,6 @@ export const Footer: FC = () => {
                     <div className="grid grid-cols-2 md:grid-cols-6 gap-2 md:gap-8 md:space-x-12 relative">
                         <div className='flex flex-col col-span-2 mx-4 items-center md:items-start'>
                             <div className='flex flex-row ml-1'>
-                                <Link href="https://solana.com" target="_blank" rel="noopener noreferrer" passHref className="text-secondary hover:text-white">
-                                    <div className='flex flex-row ml-1'>
-                                        <Image
-                                            src="/solanaLogo.png"
-                                            alt="solana icon"
-                                            width={156}
-                                            height={96}
-                                        />
-                                    </div>
-                                </Link>
                             </div>
                             <div className="flex md:ml-2">
                                 {/* X / Twitter */}
@@ -46,45 +36,6 @@ export const Footer: FC = () => {
                             </div>
                             <div className="mb-2 m-1 sm:text-left place-items-start items-start font-normal tracking-tight text-secondary">
                                         © { currentYear } built by Gael, art by Elsa
-                            </div>
-                        </div>
-
-                        <div className="mb-2 items-center mx-auto max-w-screen-lg">
-                            <div className="font-normal capitalize mb-2.5">SOLANA</div>
-
-                            <div className="flex flex-col mb-0 gap-2">
-                                <Link href="https://solana.com" target="_blank" rel="noopener noreferrer" passHref className="text-secondary hover:text-white">
-                                    Labs
-                                </Link>
-                                <Link href="https://solana.org" target="_blank" rel="noopener noreferrer" passHref className="text-secondary hover:text-white">
-                                    Foundation
-                                </Link>
-                            </div>
-                        </div>
-
-                        <div className="mb-2 items-center mx-auto max-w-screen-lg">
-                            <h5 className="font-normal capitalize tracking-tight  mb-2.5">DEVELOPERS</h5>
-
-                            <div className="flex flex-col mb-0 gap-2">
-                                <Link href="https://docs.solana.com/developers" target="_blank" rel="noopener noreferrer" passHref className="text-secondary hover:text-white">
-                                    Documentation
-                                </Link>
-                                <Link href="https://github.com/solana-mobile/solana-mobile-stack-sdk" target="_blank" rel="noopener noreferrer" passHref className="text-secondary hover:text-white">
-                                    Mobile SDK
-                                </Link>
-                            </div>
-                        </div>
-
-                        <div className="mb-2 items-center mx-auto max-w-screen-lg">
-                            <h5 className="font-normal tracking-tight  mb-2.5">ECOSYSTEM</h5>
-
-                            <div className="flex flex-col mb-0 gap-2">
-                                <Link href="https://solana.com/news" target="_blank" rel="noopener noreferrer" passHref className="text-secondary hover:text-white">
-                                    News
-                                </Link>
-                                <Link href="https://solana.org/validators" target="_blank" rel="noopener noreferrer" passHref className="text-secondary hover:text-white">
-                                    Validators
-                                </Link>
                             </div>
                         </div>
                     </div>

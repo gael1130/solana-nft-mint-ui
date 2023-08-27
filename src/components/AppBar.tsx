@@ -24,7 +24,7 @@ export const AppBar: React.FC = () => {
               <img src="new-logo.svg" alt="" className='w-50 md:w-56 lg:w-64'/>
             </Link>
           </div>
-          <WalletMultiButtonDynamic className="btn-ghost btn-sm relative flex md:hidden text-lg " />
+          <WalletMultiButtonDynamic className="btn-ghost btn-sm relative flex md:hidden text-lg "/>
         </div>
 
         {/* Nav Links */}

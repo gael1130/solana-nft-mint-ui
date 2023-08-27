@@ -46,7 +46,7 @@ export const HomeView: FC = ({ }) => {
         </h4>
         <div className="relative group">
 
-          <Image src="/../public/17.png" alt="Solana Love Badges Collction Image" width={300} height={300} className='rounded mx-auto' />
+          <Image src="/../public/17.png" alt="Solana Love Badges Collection Image" width={300} height={300} className='rounded mx-auto' />
         </div>
         <div className="flex flex-col mt-2">
           {/* <RequestAirdrop /> */}
