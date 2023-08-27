@@ -34,9 +34,9 @@ export const HomeView: FC = ({ }) => {
 
     <div className="md:hero mx-auto p-2">
       <div className="md:hero-content flex flex-col">
-        <div className='mt-6'>
-        <div className='text-sm font-normal align-bottom text-right text-slate-600 mt-4'>v0.1</div>
-        <h1 className="text-center text-5xl md:pl-12 font-bold text-transparent bg-clip-text bg-gradient-to-br from-indigo-500 to-fuchsia-500 mb-4">
+        <div className='mt-2'>
+        <div className='text-sm font-normal align-bottom text-right text-slate-600 mt-2'>v0.1</div>
+        <h1 className="h-[7rem] text-center text-5xl md:pl-12 font-bold text-transparent bg-clip-text bg-gradient-to-br from-indigo-500 to-fuchsia-500">
           Solana Love Badges
         </h1>
         </div>
