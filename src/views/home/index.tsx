@@ -46,7 +46,18 @@ export const HomeView: FC = ({ }) => {
         </h4>
         <div className="relative group">
 
-          <Image src="/../public/17.png" alt="Solana Love Badges Collection Image" width={300} height={300} className='rounded mx-auto' />
+          {/* <Image src="/17.png" alt="Solana Love Badges Collection Image" width={300} height={300} className='rounded mx-auto' /> */}
+          {/* <video src="public/gif-video.mp4" autoPlay loop className='w-full'/> */}
+          {/* public/17.png */}
+          <video autoPlay loop muted width={300} height={300} className='rounded mx-auto'>
+            <source src="/gif-video.mp4" type="video/mp4" />
+            {/* /home/kalel1130/projects/nft-solana-1/quicknode-guide/test2/dapp-scaffold/public/gif-video.mp4 */}
+            {/* public/gif-video.mp4 */}
+
+          </video>
+
+          {/* public/gif-video.mp4 */}
+
         </div>
         <div className="flex flex-col mt-2">
           {/* <RequestAirdrop /> */}

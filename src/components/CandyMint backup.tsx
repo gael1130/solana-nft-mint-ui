@@ -164,8 +164,6 @@ const onClick = useCallback(async () => {
         getUserSOLBalance(wallet.publicKey, connection);
         setMintCreated(nftMint.publicKey);
 
-        retrieveAvailability();
-
         const remaining = candyMachine.itemsLoaded - Number(candyMachine.itemsRedeemed)
         setNftsRemaining(remaining);
 
@@ -180,7 +178,7 @@ const onClick = useCallback(async () => {
 }, [wallet, connection, getUserSOLBalance, umi, candyMachineAddress, treasury, mintCreated, nftsRemaining, setMintCreated]);
 
     return (
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-row justify-center">
             {/* I added below the flex flex-col to align better */}
                 <div className="flex flex-col relative group items-center">
                     <div className="m-1 absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-fuchsia-500 
@@ -191,8 +189,8 @@ const onClick = useCallback(async () => {
                             >
                                 <span>Mint a Badge for {costInSol} Sol  </span>
                         </button>
+                        <p className='text-slate-600 ml-2 text-center'>{nftsRemaining} NFTs remaining / {nftsTotal} total, {nftsMinted} already minted</p>
                 </div>
-                <p className='text-white ml-2 text-center drop-shadow'>{nftsRemaining} NFTs remaining = {nftsTotal} total - {nftsMinted} already minted</p>
         </div>
     );
 };

@@ -15,6 +15,7 @@ import { setComputeUnitLimit } from '@metaplex-foundation/mpl-toolbox';
 import { clusterApiUrl } from '@solana/web3.js';
 import * as bs58 from 'bs58';
 import { set } from 'date-fns';
+import { on } from 'events';
 
 // These access the environment variables we defined in the .env file
 const quicknodeEndpoint = process.env.NEXT_PUBLIC_RPC || clusterApiUrl('devnet');
@@ -114,10 +115,22 @@ const retrieveAvailability = async() => {
     // // return { nftsTotal, nftsMinted, nftsRemaining };
 };
 
+const retryWithExponentialBackoff = async (retryCount: number) => {
+    const maxRetries = 5;
+    const retryDelayMS = 2 ** retryCount * 1000; // exponential delay
+
+    if (retryCount > maxRetries) {
+        throw new Error('Max retries exceeded (5)');
+    }
+
+    await new Promise((resolve) => setTimeout(resolve, retryDelayMS));
+    return onClick(); // Retry the OnClick method
+};
+
 
 useEffect(() => {
     retrieveAvailability();
-  }, [mintCreated]);
+  }, [candyMachineAddress, umi]);
 
 const onClick = useCallback(async () => {
     if (!wallet.publicKey) {
@@ -164,9 +177,12 @@ const onClick = useCallback(async () => {
         getUserSOLBalance(wallet.publicKey, connection);
         setMintCreated(nftMint.publicKey);
 
-        retrieveAvailability();
+        const updateCandyMachine = await fetchCandyMachine(
+            umi,
+            candyMachineAddress,
+        );
 
-        const remaining = candyMachine.itemsLoaded - Number(candyMachine.itemsRedeemed)
+        const remaining = updateCandyMachine.itemsLoaded - Number(updateCandyMachine.itemsRedeemed)
         setNftsRemaining(remaining);
 
 
@@ -174,13 +190,16 @@ const onClick = useCallback(async () => {
 
 
     } catch (error: any) {
+        if (error?.includes('429')) {
+            await retryWithExponentialBackoff(retryCount);
+        }
         notify({ type: 'error', message: `Error minting!`, description: error?.message });
         console.log('error', `Mint failed! ${error?.message}`);
     }
 }, [wallet, connection, getUserSOLBalance, umi, candyMachineAddress, treasury, mintCreated, nftsRemaining, setMintCreated]);
 
     return (
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-row justify-center">
             {/* I added below the flex flex-col to align better */}
                 <div className="flex flex-col relative group items-center">
                     <div className="m-1 absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-fuchsia-500 
@@ -191,8 +210,8 @@ const onClick = useCallback(async () => {
                             >
                                 <span>Mint a Badge for {costInSol} Sol  </span>
                         </button>
+                        <p className='text-slate-600 ml-2 text-center'>{nftsRemaining} NFTs remaining / {nftsTotal} total, {nftsMinted} already minted</p>
                 </div>
-                <p className='text-white ml-2 text-center drop-shadow'>{nftsRemaining} NFTs remaining = {nftsTotal} total - {nftsMinted} already minted</p>
         </div>
     );
 };
