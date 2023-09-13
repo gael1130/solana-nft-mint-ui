@@ -9,7 +9,6 @@ import Image from 'next/image';
 import { useWallet, useConnection } from '@solana/wallet-adapter-react';
 
 // Components
-import { RequestAirdrop } from '../../components/RequestAirdrop';
 import pkg from '../../../package.json';
 import { CandyMint } from '../../components/CandyMint';
 
@@ -37,12 +36,12 @@ export const HomeView: FC = ({ }) => {
         <div className='mt-2'>
         <div className='text-sm font-normal align-bottom text-right text-slate-600 mt-2'>v0.1</div>
         <h1 className="h-[7rem] text-center text-5xl md:pl-12 font-bold text-transparent bg-clip-text bg-gradient-to-br from-indigo-500 to-fuchsia-500">
-          Solana Love Badges
+          Solo Bricks Badges
         </h1>
         </div>
         <h4 className="md:w-full text-2x1 md:text-4xl text-center text-slate-300 my-2">
-          <p>98 Love Badges on Solana to learn and grow together</p>
-          <p className='text-slate-500 text-2x1 leading-relaxed'>Mint and get a badge with access to our learning platform</p>
+          <p>98 Solo Bricks Badges on Solana to learn and grow together</p>
+          <p className='text-slate-500 text-2x1 leading-relaxed'>Mint to get a badge and access future projects 😅</p>
         </h4>
         <div className="relative group">
 

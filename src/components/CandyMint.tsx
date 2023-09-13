@@ -36,17 +36,12 @@ export const CandyMint: FC = () => {
 // );
 // set the state for the nft availability
 const [mintCreated, setMintCreated] = useState<PublicKey | null>(null);
-
 const [nftsTotal, setnftsTotal] = useState<number>(0);
 const [nftsMinted, setNftsMinted] = useState<number>(0);
 const [nftsRemaining, setNftsRemaining] = useState<number>(0);
 const [costInSol, setCostInSol] = useState<number>(0);
-
 const [defaultCandyGuardSet, setDefaultCandyGuardSet] = useState<CandyGuard<DefaultGuardSet>>();
-
 const [cmv3v2, setCandyMachine] = useState<CandyMachine>();
-
-
 
 
 const retrieveAvailability = async() => {
@@ -56,7 +51,6 @@ const retrieveAvailability = async() => {
     );
     
     setCandyMachine(candyMachine);
-    console.log("candyMachine", candyMachine);
 
     // Count the NFTs available, total and minted
     setnftsTotal(candyMachine.itemsLoaded);
@@ -64,6 +58,7 @@ const retrieveAvailability = async() => {
     setNftsMinted(Number(candyMachine.itemsRedeemed));
     const remaining = candyMachine.itemsLoaded - Number(candyMachine.itemsRedeemed)
     setNftsRemaining(remaining);
+
 
     // Fetch the Candy Guard to get the price
     const candyGuard = await safeFetchCandyGuard(umi, candyMachine.mintAuthority);
@@ -92,32 +87,13 @@ const retrieveAvailability = async() => {
         console.log('info', `No NFTs available`)
         console.log("remaining mama", remaining)
     }
-
-    // useEffect(() => {
-    //     retrieveAvailability();
-    //   }, [mintCreated]);
-
-
-
-
-    // nft available c'est le total en fait
-    // const nftsTotal = candyMachine.data.itemsAvailable;
-    // console.log('info', `NFTs total: ${nftsTotal}`)
-    // // nft minted c'est le nombre de nft minted
-    // const nftsMinted = candyMachine.itemsRedeemed;
-    // console.log('info', `NFTs already minted: ${nftsMinted}`)
-    // // maintenant calcul la dif
-    // const nftsRemaining = nftsTotal - nftsMinted;
-    // console.log('info', `NFTs still available new Remaining: ${nftsRemaining}`)
-    // console.log("****")
-    // console.log("canyMachine", candyMachine.data.creators);
-    // // return { nftsTotal, nftsMinted, nftsRemaining };
 };
-
 
 useEffect(() => {
     retrieveAvailability();
-  }, [mintCreated]);
+  }, []);
+
+
 
 const onClick = useCallback(async () => {
     if (!wallet.publicKey) {
@@ -138,6 +114,7 @@ const onClick = useCallback(async () => {
     console.log("candyGuard baby", candyGuard);
     try {
 
+
         // Mint from the Candy Machine.
         const nftMint = generateSigner(umi);
         const transaction = await transactionBuilder()
@@ -156,28 +133,59 @@ const onClick = useCallback(async () => {
             );
         const { signature } = await transaction.sendAndConfirm(umi, {
             confirm: { commitment: "confirmed" },
+
         });
         const txid = bs58.encode(signature);
         console.log('success', `Mint successful! ${txid}`)
         notify({ type: 'success', message: 'Mint successful!', txid });
-
         getUserSOLBalance(wallet.publicKey, connection);
+
+        // fetch the numbers of nfts minted
+        const updatedCandyMachine = await fetchCandyMachine(umi, candyMachineAddress);
+        console.log("updatedCandyMachine after mint $$$ $$$", updatedCandyMachine);
+        const updatedRemaining = updatedCandyMachine.itemsLoaded - Number(updatedCandyMachine.itemsRedeemed)
+        console.log("updatedRemaining 123 ##", updatedRemaining);
+
+        // Update states in a single call
+        setCandyMachine(updatedCandyMachine);
+        setNftsMinted(Number(updatedCandyMachine.itemsRedeemed));
+        setNftsRemaining(updatedRemaining);
+
+
+
         setMintCreated(nftMint.publicKey);
 
-        retrieveAvailability();
+        // Fetch Updated availability
+        // const updatedCandyMachine = await fetchCandyMachine(umi, candyMachineAddress);
+        // console.log("updatedCandyMachine after mint $$$ $$$", updatedCandyMachine);
+        // const updatedRemaining = updatedCandyMachine.itemsLoaded - Number(updatedCandyMachine.itemsRedeemed)
+        // console.log("updatedRemaining 123 ##", updatedRemaining);
 
-        const remaining = candyMachine.itemsLoaded - Number(candyMachine.itemsRedeemed)
-        setNftsRemaining(remaining);
+        // Update states in a single call
+        // setCandyMachine(updatedCandyMachine);
+        // setNftsMinted(Number(updatedCandyMachine.itemsRedeemed));
+        // setNftsRemaining(updatedRemaining);
 
 
-        console.log("#### after tx success ####")
+        // console.log("###a fter success####")
+        // console.log("remaining", updatedRemaining);
 
+
+        // retrieveAvailability();
+
+        // console.log("retrievability",retrieveAvailability());
+        // const remaining = candyMachine.itemsLoaded - Number(candyMachine.itemsRedeemed)
+        // setNftsRemaining(remaining);
+        // console.log("#### after tx success ####")
+        // console.log("remaining", remaining)
 
     } catch (error: any) {
         notify({ type: 'error', message: `Error minting!`, description: error?.message });
         console.log('error', `Mint failed! ${error?.message}`);
     }
-}, [wallet, connection, getUserSOLBalance, umi, candyMachineAddress, treasury, mintCreated, nftsRemaining, setMintCreated]);
+}, [wallet, connection, getUserSOLBalance, umi, candyMachineAddress, treasury]);
+// }, [wallet, connection, getUserSOLBalance, umi, candyMachineAddress, treasury, mintCreated, nftsRemaining, setMintCreated]);
+
 
     return (
         <div className="flex flex-col justify-center">
