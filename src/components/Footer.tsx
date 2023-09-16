@@ -13,11 +13,20 @@ export const Footer: FC = () => {
                             </div>
                             <div className="flex md:ml-2">
                                 {/* X / Twitter */}
-                                <a href="https://twitter.com/Gael1130" target="_blank">
-                                    <img src="x_gael1130.svg" alt="" className='w-24 h-full mx-auto hover:bg-red'/>
+                                <a href="https://twitter.com/Gael1130" target="_blank" rel="noreferrer">
+                                <Image 
+    src="/x_gael1130.svg" 
+    alt="Description for Image" 
+    width={240} // Assuming width is 24 * 10 (since the class indicates 'w-24')
+    height={240} // Assuming an equal height as width for simplicity, adjust as needed
+    className='w-24 h-full mx-auto hover:bg-red'
+/>
+
+
+                                    {/* <img src="x_gael1130.svg" alt="" className='w-24 h-full mx-auto hover:bg-red'/> */}
                                 </a>
                                 {/* Youtube */}
-                                <a href="https://youtu.be/GDyXXdf4Znc"  type="button" className="border-white text-secondary hover:text-red-500 leading-normal focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1" target="_blank">
+                                <a href="https://youtu.be/GDyXXdf4Znc"  type="button" className="border-white text-secondary hover:text-red-500 leading-normal focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1" target="_blank" rel="noreferrer">
                                     <svg aria-hidden="true"
                                     focusable="false"
                                     data-prefix="fab"
