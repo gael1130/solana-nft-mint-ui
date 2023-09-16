@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import React, { useState } from "react";
 import { useAutoConnect } from '../contexts/AutoConnectProvider';
 import NavElement from './nav-element';
+import Image from 'next/image';
 
 const WalletMultiButtonDynamic = dynamic(
   async () => (await import('@solana/wallet-adapter-react-ui')).WalletMultiButton,
@@ -20,7 +21,9 @@ export const AppBar: React.FC = () => {
         <div className="navbar-start align-items-center">
           <div className="hidden sm:inline w-22 h-18 md:p-2 ml-10">
             <Link href="/" rel="noopener noreferrer" passHref className="text-secondary hover:text-white">
-              <img src="sl0-logo.svg" alt="" className='w-50 md:w-56 lg:w-64'/>
+            <Image src="/sl0-logo.svg" alt="Description for Image" width={500} height={500} className='w-50 md:w-56 lg:w-64'/>
+{/* 
+              <img src="sl0-logo.svg" alt="" className='w-50 md:w-56 lg:w-64'/> */}
             </Link>
           </div>
           <WalletMultiButtonDynamic className="btn-ghost btn-sm relative flex md:hidden text-lg "/>

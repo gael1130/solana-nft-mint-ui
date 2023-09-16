@@ -1,27 +1,24 @@
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
-import { FC, useCallback, useMemo, useEffect, useState, use } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 import { notify } from "../utils/notifications";
 import useUserSOLBalanceStore from '../stores/useUserSOLBalanceStore';
 import { createUmi } from '@metaplex-foundation/umi-bundle-defaults';
 // Option, unwrapSome (deprecated, replaced by unwrapOption), SolAmount below is for the default CandyGuard to get the Price later
 // You import publickey (minuscule) and PublicKey (majuscule) from umi
-import { generateSigner, transactionBuilder, publicKey, PublicKey , some, Option, unwrapSome, SolAmount, unwrapOption } from '@metaplex-foundation/umi';
+import { generateSigner, transactionBuilder, publicKey, PublicKey , some, Option, SolAmount, unwrapOption } from '@metaplex-foundation/umi';
 // SolPayment below is the Candy Guard for payment, same for DefaultGuardSet and CandyGuard to get the price
 // The CandyMachine imported below will be used to check if the candy machine exists in my states
-import { fetchCandyMachine, mintV2, mplCandyMachine, safeFetchCandyGuard, SolPayment, DefaultGuardSet, CandyGuard, getCandyMachineDataSerializer, getCandyGuardAccountDataSerializer, getCandyMachineAccountDataSerializer, CandyMachine } from "@metaplex-foundation/mpl-candy-machine";
+import { fetchCandyMachine, mintV2, mplCandyMachine, safeFetchCandyGuard, SolPayment, DefaultGuardSet, CandyGuard, CandyMachine } from "@metaplex-foundation/mpl-candy-machine";
 import { walletAdapterIdentity } from '@metaplex-foundation/umi-signer-wallet-adapters';
 import { mplTokenMetadata } from '@metaplex-foundation/mpl-token-metadata';
 import { setComputeUnitLimit } from '@metaplex-foundation/mpl-toolbox';
 import { clusterApiUrl } from '@solana/web3.js';
 import * as bs58 from 'bs58';
-import { set } from 'date-fns';
 
 // These access the environment variables we defined in the .env file
 const quicknodeEndpoint = process.env.NEXT_PUBLIC_RPC || clusterApiUrl('devnet');
 const candyMachineAddress = publicKey(process.env.NEXT_PUBLIC_CANDY_MACHINE_ID);
 const treasury = publicKey(process.env.NEXT_PUBLIC_TREASURY);
-
-console.log("here brother", quicknodeEndpoint, candyMachineAddress, treasury);
 
 export const CandyMint: FC = () => {
     const { connection } = useConnection();
@@ -42,6 +39,10 @@ const [nftsRemaining, setNftsRemaining] = useState<number>(0);
 const [costInSol, setCostInSol] = useState<number>(0);
 const [defaultCandyGuardSet, setDefaultCandyGuardSet] = useState<CandyGuard<DefaultGuardSet>>();
 const [cmv3v2, setCandyMachine] = useState<CandyMachine>();
+
+useEffect(() => {
+    retrieveAvailability();
+  },[]);
 
 
 const retrieveAvailability = async() => {
@@ -89,9 +90,7 @@ const retrieveAvailability = async() => {
     }
 };
 
-useEffect(() => {
-    retrieveAvailability();
-  }, []);
+
 
 
 
