@@ -1,6 +1,9 @@
 import { WalletAdapterNetwork, WalletError } from '@solana/wallet-adapter-base';
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
 import {
+    LedgerWalletAdapter,
+    PhantomWalletAdapter,
+    SolflareWalletAdapter,
     UnsafeBurnerWalletAdapter
 } from '@solana/wallet-adapter-wallets';
 import { Cluster, clusterApiUrl } from '@solana/web3.js';
@@ -26,7 +29,10 @@ const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
     const wallets = useMemo(
         () => [
-            new UnsafeBurnerWalletAdapter(),
+            new PhantomWalletAdapter({ network }),
+            new LedgerWalletAdapter(),
+            new SolflareWalletAdapter({ network }),
+            // new UnsafeBurnerWalletAdapter(),
         ],
         [network]
     );

@@ -26,18 +26,18 @@ export const AppBar: React.FC = () => {
               <img src="sl0-logo.svg" alt="" className='w-50 md:w-56 lg:w-64'/> */}
             </Link>
           </div>
-          <WalletMultiButtonDynamic className="btn-ghost btn-sm relative flex md:hidden text-lg "/>
+          {/* <WalletMultiButtonDynamic className="btn-ghost btn-sm relative flex md:hidden text-lg "/> */}
         </div>
 
         {/* Nav Links */}
         {/* Wallet & Settings */}
         <div className="navbar-end">
           <div className="hidden md:inline-flex align-items-center justify-items gap-6">
-          <NavElement
+          {/* <NavElement
             label="Home"
             href="/"
             navigationStarts={() => setIsNavOpen(false)}
-          />
+          /> */}
           <WalletMultiButtonDynamic className="btn-ghost btn-sm rounded-btn text-lg mr-6 " />
         </div>
           <label
