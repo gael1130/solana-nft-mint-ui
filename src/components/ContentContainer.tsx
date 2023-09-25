@@ -15,7 +15,7 @@ export const ContentContainer: React.FC<Props> = ({ children }) => {
         {children}
       </div>
       {/* SideBar / Drawer */}
-      <div className="drawer-side">
+      {/* <div className="drawer-side">
         <label htmlFor="my-drawer" className="drawer-overlay gap-6"></label>
 
         <ul className="p-4 overflow-y-auto menu w-80 bg-base-100 gap-10 sm:flex items-center">
@@ -35,7 +35,7 @@ export const ContentContainer: React.FC<Props> = ({ children }) => {
           />
           </li>
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 };

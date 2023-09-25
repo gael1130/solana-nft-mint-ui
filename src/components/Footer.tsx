@@ -16,13 +16,14 @@ export const Footer: FC = () => {
                   href="https://twitter.com/Gael1130"
                   target="_blank"
                   rel="noreferrer"
+                  className="hover:text-blue-500"
                 >
                   <Image
                     src="/x_gael1130.svg"
-                    alt="Description for Image"
+                    alt="Twitter / X Handle Gael"
                     width={240} // Assuming width is 24 * 10 (since the class indicates 'w-24')
                     height={240} // Assuming an equal height as width for simplicity, adjust as needed
-                    className="w-24 h-full mx-auto hover:bg-red"
+                    className="w-24 h-full mx-auto hover:invert"
                   />
                 </a>
                 {/* Youtube Gael */}
@@ -56,6 +57,7 @@ export const Footer: FC = () => {
                     href="https://www.revealdesignagency.com/"
                     target="_blank"
                     rel="noreferrer"
+                    className="hover:text-blue-500 hover:underline"
                   >
                     {" "}
                     Elsa
@@ -73,7 +75,7 @@ export const Footer: FC = () => {
                     viewBox="0 0 48 48"
                     // width="24px"
                     // height="24px"
-                    className="h-5 mt-2 mx-auto"
+                    className="h-5 mt-2 mx-auto hover:invert"
                   >
                     <path
                       fill="#0288D1"
