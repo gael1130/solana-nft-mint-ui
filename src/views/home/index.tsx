@@ -36,12 +36,12 @@ export const HomeView: FC = ({ }) => {
         <div className='mt-2'>
         <div className='text-sm font-normal align-bottom text-right text-slate-600 mt-2'>v0.1</div>
         <h1 className="h-[7rem] text-center text-5xl md:pl-12 font-bold text-transparent bg-clip-text bg-gradient-to-br from-indigo-500 to-fuchsia-500">
-          Solo Bricks Badges
+          Real Bricks
         </h1>
         </div>
         <h4 className="md:w-full text-2x1 md:text-4xl text-center text-slate-300 my-2">
-          <p>98 Solo Bricks Badges on Solana to learn and grow together</p>
-          <p className='text-slate-500 text-2x1 leading-relaxed'>Mint to get a badge and access future projects 😅</p>
+          <p>98 Bricks ❤️ on Solana</p>
+          <p className='text-slate-500 text-2x1 leading-relaxed'>Mint a NFT for access</p>
         </h4>
         <div className="relative group">
 

@@ -224,7 +224,7 @@ export const CandyMint: FC = () => {
           className="px-4 m-1 btn animate-pulse bg-gradient-to-br from-indigo-500 to-fuchsia-500 hover:from-white hover:to-purple-300 text-black group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"
           onClick={onClick}
         >
-          <span>Mint a Badge for {costInSol} Sol </span>
+          <span>Mint a brick for {costInSol} Sol </span>
         </button>
       </div>
       <p className="text-white ml-2 text-center drop-shadow">
