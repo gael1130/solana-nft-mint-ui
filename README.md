@@ -1,7 +1,8 @@
 
 # Minting Website for your NFTs
 
-You can try the mainnet version here if you want to mint one of my NFTs: [RealBricks](https://realbricks.xyz/)
+You can try the mainnet version here if you want to mint one of my NFTs: [RealBricks](https://realbricks.xyz/) \
+[Tutorial Video Link](https://www.youtube.com/watch?v=awzE0MP0Ewc)
 
 Let's go!
 Again, but now in Prod
