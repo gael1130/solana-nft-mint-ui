@@ -28,7 +28,7 @@ export const Footer: FC = () => {
                 </a>
                 {/* Youtube Gael */}
                 <a
-                  href="https://youtu.be/GDyXXdf4Znc"
+                  href="https://youtu.be/awzE0MP0Ewc"
                   type="button"
                   className="border-white text-secondary hover:text-red-500 leading-normal focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
                   target="_blank"
