@@ -14,7 +14,7 @@
     "@heroicons/react": "^1.0.5",
     "@metaplex-foundation/mpl-candy-machine": "^6.0.0",
     "@metaplex-foundation/mpl-token-metadata": "^3.0.0",
-    "@metaplex-foundation/mpl-toolbox": "^0.8.1",
+    "@metaplex-foundation/mpl-toolbox": "^0.9.1",
     "@metaplex-foundation/umi": "^0.8.9",
     "@metaplex-foundation/umi-bundle-defaults": "^0.8.9",
     "@metaplex-foundation/umi-signer-wallet-adapters": "^0.8.9",
